@@ -7,8 +7,6 @@ public class example2_9_BinaryCheck extends AlgorithmModel {
 
     }
 
-
-
     @Override
     public void excute(){
 
