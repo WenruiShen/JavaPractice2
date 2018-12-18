@@ -1,7 +1,7 @@
 package bookAlgorithms.examples;
 
 
-public class example2_9_BinaryCheck implements AlgorithmModel {
+public class example2_9_BinaryCheck extends AlgorithmModel {
 
     public void run(int[] a){
 

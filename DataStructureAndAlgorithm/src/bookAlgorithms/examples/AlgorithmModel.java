@@ -1,7 +1,11 @@
 package bookAlgorithms.examples;
 
-import java.util.List;
+public abstract class AlgorithmModel {
 
-public interface AlgorithmModel {
-    public void excute();
+    public int[] scan(){
+        int[] array = new int[10];
+        return array;
+    };
+
+    public abstract void excute();
 }

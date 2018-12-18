@@ -1,7 +1,7 @@
 package bookAlgorithms.examples;
 
 
-public class example2_8_MaxSubList_4 implements AlgorithmModel {
+public class example2_8_MaxSubList_4 extends AlgorithmModel {
 
     public void run(int[] a){
 
