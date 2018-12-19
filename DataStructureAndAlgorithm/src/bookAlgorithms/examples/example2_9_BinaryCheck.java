@@ -29,7 +29,7 @@ public class example2_9_BinaryCheck extends AlgorithmModel {
 
     @Override
     public void excute(){
-        Integer[] arrary = new Integer[]{1, 2, 3, 4, 6, 7, 12, 32, 443, 545, 565, 976};
+        Integer[] arrary = new Integer[]{1, 2, 3, 4, 6, 7, 12, 32, 443, 545, 565, 976, 3121, 3233, 44556, 4557};
         //List<Integer> list = new ArrayList<Integer>(Arrays.asList(arrary));
         Integer target = 443;
         int index = run(arrary, target);
