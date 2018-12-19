@@ -5,6 +5,7 @@ package bookAlgorithms.examples;
  * Description: Recursive maximum contiguous subsequence sum algorithm.
  *              Find maximum sum in subarrayapanning a[left...right].
  *              Does not attempt to maintain actual best sequence.
+ *              递归法求取最大子序列之和。
  */
 public class example2_7_MaxSubList_3 extends AlgorithmModel {
 
