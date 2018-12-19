@@ -7,5 +7,18 @@ public abstract class AlgorithmModel {
         return array;
     };
 
+    public int max3(int a, int b, int c){
+        int maxNum = a;
+
+        if(b > maxNum){
+            maxNum = b;
+        }
+
+        if(c > maxNum){
+            maxNum = c;
+        }
+        return maxNum;
+    }
+
     public abstract void excute();
 }
