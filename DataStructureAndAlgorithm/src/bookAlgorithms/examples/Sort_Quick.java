@@ -85,6 +85,9 @@ public class Sort_Quick extends AlgorithmModel{
         }
     }
 
+    // 第三种实现：递归，只对长度大于k的子序列递归调用快速排序，,让原序列基本有序，然后再对整个基本有序序列用插入排序算法排序。
+    // TODO:
+
     @Override
     public void excute() {
         System.out.println("Quick Sort:");
