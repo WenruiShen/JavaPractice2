@@ -3,10 +3,10 @@ package bookAlgorithms.examples;
 /*
  * Created by shenwenrui on 20181219.
  * 归并排序
+ * 简介：O(N*logN)，稳定
+ * 参考链接：https://blog.csdn.net/morewindows/article/details/6678165
  */
 public class Sort_Merge  extends AlgorithmModel {
-
-
     //将有二个有序数列a[left...mid]和a[mid+1...right]合并。
     public void mergeArray(int[] array, int left, int mid, int right, int[] temp){
         int i = left, j = mid + 1;
