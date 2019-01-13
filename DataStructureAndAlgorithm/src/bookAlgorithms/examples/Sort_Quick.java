@@ -1,5 +1,8 @@
 package bookAlgorithms.examples;
 
+
+import static java.lang.Math.random;
+
 /*
  * Created by shenwenrui on 20181219.
  * 快排
@@ -8,7 +11,9 @@ package bookAlgorithms.examples;
  *  1．先从数列中取出一个数作为基准数。
  *  2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。
  *  3．再对左右区间重复第二步，直到各区间只有一个数。
- * 参考：https://blog.csdn.net/u011384489/article/details/78300712#9-%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fquick-sort
+ * 参考：
+ *  [1].https://blog.csdn.net/u011384489/article/details/78300712#9-%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8Fquick-sort;
+ *  [2].https://blog.csdn.net/morewindows/article/details/6684558;
  *
  */
 public class Sort_Quick extends AlgorithmModel{
@@ -54,15 +59,30 @@ public class Sort_Quick extends AlgorithmModel{
     }
 
     // 第一种实现：递归，选取第一个元素为基准数
-    public void QuickSort(int[] array, int left, int right){
+    public void QuickSort_1(int[] array, int left, int right){
         if(left < right){
             int st = left;  //选取最左边的数为基准数
             st = AdjustArray(array, left, right, st);
-            QuickSort(array, left, st-1);   //递归调用
-            QuickSort(array, st+1, right);
+            QuickSort_1(array, left, st-1);   //递归调用
+            QuickSort_1(array, st+1, right);
         }
+    }
 
+    // 取区间内随机数的函数
+    int randSt(int low, int high)
+    {
+        int size = high - low + 1;
+        return  low + (int) random()%size;
+    }
 
+    // 第二种实现：递归，随机选取一个元素为基准数
+    public void QuickSort_2(int[] array, int left, int right){
+        if(left < right){
+            int st = randSt(left, right);  //随机选取一个元素为基准数
+            st = AdjustArray(array, left, right, st);
+            QuickSort_2(array, left, st-1);   //递归调用
+            QuickSort_2(array, st+1, right);
+        }
     }
 
     @Override
@@ -72,7 +92,7 @@ public class Sort_Quick extends AlgorithmModel{
         System.out.println("arrary:");
         printIntArray(arrary);
 
-        QuickSort(arrary, 0, arrary.length-1);
+        QuickSort_2(arrary, 0, arrary.length-1);
         System.out.println("\nSortedArrary:");
         printIntArray(arrary);
     }
