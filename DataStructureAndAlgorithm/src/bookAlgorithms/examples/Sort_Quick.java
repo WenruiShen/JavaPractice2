@@ -96,7 +96,7 @@ public class Sort_Quick extends AlgorithmModel{
         printIntArray(arrary);
 
         QuickSort_2(arrary, 0, arrary.length-1);
-        System.out.println("\nSortedArrary:");
+        System.out.println("SortedArrary:");
         printIntArray(arrary);
     }
 }

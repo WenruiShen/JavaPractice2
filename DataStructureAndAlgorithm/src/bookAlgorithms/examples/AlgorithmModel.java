@@ -23,9 +23,11 @@ public abstract class AlgorithmModel {
     public abstract void excute();
 
     public void printIntArray(int[] array){
+        //System.out.println("\n");
         for (Integer element : array){
             System.out.print(element);
             System.out.print(", ");
         }
+        System.out.println("\n");
     }
 }
