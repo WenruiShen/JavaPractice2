@@ -18,11 +18,6 @@ import static java.lang.Math.random;
  */
 public class Sort_Quick extends AlgorithmModel{
 
-    // 交换数组中的两个元素
-    void swap(int[] array, int i, int j){
-        int temp = array[i]; array[i] = array[j]; array[j] = temp;
-    }
-
     // 分区过程
     // 输入：int st: 选取的基准数坐标
     // 返回：调整后的基准数坐标

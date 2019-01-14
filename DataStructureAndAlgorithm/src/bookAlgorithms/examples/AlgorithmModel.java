@@ -30,4 +30,9 @@ public abstract class AlgorithmModel {
         }
         System.out.println("\n");
     }
+
+    // 交换数组中的两个元素
+    void swap(int[] array, int i, int j){
+        int temp = array[i]; array[i] = array[j]; array[j] = temp;
+    }
 }
