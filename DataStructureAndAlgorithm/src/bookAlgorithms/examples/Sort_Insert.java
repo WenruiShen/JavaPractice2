@@ -22,6 +22,30 @@ public class Sort_Insert extends AlgorithmModel {
         }
     }
 
+    // 二分插入排序，由小到大
+    public void BinInsertSortAsc(int[] array){
+        int len = array.length;
+        int key ,left, right, middle;
+        for(int i=1; i<len; i++){
+            key = array[i];
+            left = 0;
+            right = i-1;
+            while (left<=right){
+                middle = (left+right)/2;
+                if(array[middle]>key){
+                    right= middle-1;
+                }else {
+                    left = middle+1;
+                }
+            }
+            int j=i;
+            for(;j>left;j--){
+                array[j] = array[j-1];
+            }
+            array[j] = key;
+        }
+    }
+
     @Override
     public void excute() {
         System.out.println("Insert Sort:");
@@ -29,7 +53,7 @@ public class Sort_Insert extends AlgorithmModel {
         System.out.println("arrary:");
         printIntArray(array);
 
-        InsertSortAsc(array);
+        BinInsertSortAsc(array);
         System.out.println("SortedArrary:");
         printIntArray(array);
     }
