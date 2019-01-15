@@ -1,7 +1,7 @@
 package bookAlgorithms.examples;
 
 /*
- * Created by shenwenrui on 20181219.
+ * Created by shenwenrui on 20190115.
  * 直接插入排序
  * 参考：
  *  [1].https://blog.csdn.net/morewindows/article/details/6665714;
