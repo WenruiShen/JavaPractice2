@@ -1,12 +1,12 @@
 package bookAlgorithms;
 
 import bookAlgorithms.examples.AlgorithmModel;
-import bookAlgorithms.examples.Sort_Select;
+import bookAlgorithms.examples.Sort_Bubble;
 
 public class running {
     public static void main(String[] args){
         System.out.println("Hellow World!");
-        AlgorithmModel example = new Sort_Select();
+        AlgorithmModel example = new Sort_Bubble();
 
         example.excute();
     }

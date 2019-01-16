@@ -16,6 +16,17 @@ package bookAlgorithms.examples;
 
 public class Sort_Bubble extends AlgorithmModel {
 
+    // 沉底
+    public void BubbleSortAsc(int[] array, int len){
+        for(int i=len-1; i>1;i--){
+            for(int j=0; j<i; j++){
+                if(array[j]>array[j+1]){
+                    swap(array, j, j+1);
+                }
+            }
+        }
+    }
+
     @Override
     public void excute() {
         System.out.println("Bubble Sort:");
@@ -23,7 +34,7 @@ public class Sort_Bubble extends AlgorithmModel {
         System.out.println("arrary:");
         printIntArray(array);
 
-        //SelectSortAsc(array, array.length);
+        BubbleSortAsc(array, array.length);
         System.out.println("SortedArrary:");
         printIntArray(array);
     }
