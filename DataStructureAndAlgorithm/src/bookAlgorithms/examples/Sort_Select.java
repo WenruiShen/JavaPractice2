@@ -8,12 +8,33 @@ package bookAlgorithms.examples;
  *      第二趟，从第二个记录开始的n-1 个记录中再选出关键码最小的记录与第二个记录交换；
  *      第i 趟，则从第i 个记录开始的n-i+1 个记录中选出关键码最小的记录与第i 个记录交换；
  *
+ *      最差时间复杂度：О(n²)
+ *      最优时间复杂度：О(n²)
+ *      平均时间复杂度：О(n²)
+ *      最差空间复杂度：О(n) total, O(1)
+ *
  * 参考:
  *      [1].https://blog.csdn.net/u011384489/article/details/78300691;
  *
  */
 public class Sort_Select extends AlgorithmModel {
 
+    public void SelectSortAsc(int[] array, int len){
+        for(int i=0; i<len-1;i++){
+            int min = array[i];
+            int minId = i;
+            for(int j=i+1;j<len;j++){
+                //找到[j,len)的最小值
+                if(min > array[j]){
+                    min = array[j];
+                    minId = j;
+                }
+            }
+            if(minId != i){
+                swap(array, i, minId);
+            }
+        }
+    }
 
     @Override
     public void excute() {
@@ -22,7 +43,7 @@ public class Sort_Select extends AlgorithmModel {
         System.out.println("arrary:");
         printIntArray(array);
 
-        //ShellSortAsc(array);
+        SelectSortAsc(array, array.length);
         System.out.println("SortedArrary:");
         printIntArray(array);
     }
