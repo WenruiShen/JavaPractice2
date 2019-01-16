@@ -1,5 +1,7 @@
-package bookAlgorithms.examples;
+package bookAlgorithms.examples.Sort;
 
+
+import bookAlgorithms.examples.AlgorithmModel;
 
 import static java.lang.Math.random;
 
@@ -16,7 +18,7 @@ import static java.lang.Math.random;
  *  [2].https://blog.csdn.net/morewindows/article/details/6684558;
  *
  */
-public class Sort_Quick extends AlgorithmModel{
+public class Sort_Quick extends AlgorithmModel {
 
     // 分区过程
     // 输入：int st: 选取的基准数坐标

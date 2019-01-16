@@ -1,4 +1,4 @@
-package bookAlgorithms.examples;
+package bookAlgorithms.examples.Sort;
 
 /*
  * Created by shenwenrui on 20190116.
@@ -13,6 +13,8 @@ package bookAlgorithms.examples;
  *      [1].https://blog.csdn.net/u011384489/article/details/78300691;
  *
  */
+
+import bookAlgorithms.examples.AlgorithmModel;
 
 public class Sort_Bubble extends AlgorithmModel {
 

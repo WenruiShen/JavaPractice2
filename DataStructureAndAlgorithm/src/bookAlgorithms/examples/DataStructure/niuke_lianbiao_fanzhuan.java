@@ -1,12 +1,13 @@
-package bookAlgorithms.examples;
+package bookAlgorithms.examples.DataStructure;
 
 import bookAlgorithms.DataModel.ListNode;
+import bookAlgorithms.examples.AlgorithmModel;
 
 /*
  * Created by shenwenrui on 20181219.
  * 牛客网：链表：单链表反转
  */
-public class niuke_lianbiao_fanzhuan extends AlgorithmModel  {
+public class niuke_lianbiao_fanzhuan extends AlgorithmModel {
 
     public ListNode<?> reverstList(ListNode<?> head){
 
