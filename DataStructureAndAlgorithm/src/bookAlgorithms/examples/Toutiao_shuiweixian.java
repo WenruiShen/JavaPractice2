@@ -67,26 +67,47 @@ public class Toutiao_shuiweixian extends AlgorithmModel {
         return waterVolume;
     }
 
-    public int getMaxIndex(int[] steps){
-        int id = 0, temp = steps[0];
-
-        return id;
+    public int getMaxIndex(int[] steps, int startId, int endId){
+        int maxId = startId;
+        for(int i=startId; i<= endId; i++){
+            if(steps[i] > steps[maxId]){
+                maxId = i;
+            }
+        }
+        return maxId;
     }
 
     //解法2：先找中间最大的，再向两边扩散
     public int calculateWaterVolume2(int[] steps){
         int waterVolume = 0;
+        int maxIndex = getMaxIndex(steps, 0, steps.length-1);
+
+        //向左遍历
+        int leftMaxIndex = maxIndex;
+        while (leftMaxIndex>0){
+            int leftSecondMaxIndex = getMaxIndex(steps, 0, leftMaxIndex-1);
+            waterVolume+=calculateOnePool(steps,leftSecondMaxIndex,leftMaxIndex);
+            leftMaxIndex=leftSecondMaxIndex;
+        }
+
+        //向右遍历
+        int rightMaxIndex = maxIndex;
+        while (rightMaxIndex<steps.length-1){
+            int rightSecondMaxIndex = getMaxIndex(steps, rightMaxIndex+1, steps.length-1);
+            waterVolume+=calculateOnePool(steps,rightMaxIndex,rightSecondMaxIndex);
+            rightMaxIndex=rightSecondMaxIndex;
+        }
         return waterVolume;
     }
 
     @Override
     public void excute() {
-        //int[] steps = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        int[] steps = {2, 5, 1, 3, 1, 2, 1, 7, 7, 6};
+        int[] steps = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}; // 6
+        //int[] steps = {2, 5, 1, 3, 1, 2, 1, 7, 7, 6}; // 17
         System.out.println("Steps:");
         printIntArray(steps);
 
-        int waterVolume = calculateWaterVolume(steps);
+        int waterVolume = calculateWaterVolume2(steps);
         System.out.println("waterVolume: ");
         System.out.println(waterVolume);
     }
