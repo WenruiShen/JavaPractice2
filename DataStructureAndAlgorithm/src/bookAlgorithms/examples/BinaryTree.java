@@ -191,13 +191,13 @@ public class BinaryTree extends AlgorithmModel{
     @Override
     public void excute() {
         System.out.println("Binary Tree:");
-        int[] array = {2, 6, 1, 7, 12, 32, 3233, 32, 44, 37, 44, 32, 32, 457, 32, 443, 32, 545, 32, 565, 32, 976, 3121};
+        int[] array = {2, 6, 1, 7, 12, 32, 39, 32, 44, 37, 44, 32, 32, 47, 32, 43, 32, 45, 32, 55, 32, 26, 21};
         //System.out.println("arrary:");
         //printIntArray(array);
 
-        BinaryTree tree = new BinaryTree();
+        //BinaryTree tree = new BinaryTree();
         for (Integer element: array){
-            tree.insert(element);
+            this.insert(element);
         }
 
         displayTree();
