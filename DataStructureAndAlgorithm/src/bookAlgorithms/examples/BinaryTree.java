@@ -2,6 +2,8 @@ package bookAlgorithms.examples;
 
 import bookAlgorithms.DataModel.BinaryNode;
 
+import java.util.Stack;
+
 /*
  * 二叉树定义
  */
@@ -60,6 +62,132 @@ public class BinaryTree extends AlgorithmModel{
         }
     }
 
+    //删除
+    public boolean delete(int key){
+        BinaryNode<Integer> current = root;
+        BinaryNode<Integer> parent = root;
+        boolean isLeftChild = false;
+
+        while (current.value != key){
+            parent = current;
+            if(key < current.value){    //向左子树进行查询
+                isLeftChild = true;
+                current = current.leftNode;
+            }else{                      //向右子树进行查询
+                isLeftChild = false;
+                current = current.rightNode;
+            }
+            if(current == null){
+                //到达叶节点，没有这个节点
+                return false;
+            }
+        }
+
+        //查找到的节点，进行删除
+        if(current.leftNode==null && current.rightNode==null){
+            //1.如果没有左右子树，直接删除
+            if(current == root){
+                root = null;
+            }else if(isLeftChild){
+                parent.leftNode = null;
+            }else {
+                parent.rightNode = null;
+            }
+        }else if(current.rightNode==null){
+            //2. 没有右节点,只有左子树,直接用左节点代替当前节点
+            if(current == root){
+                root = current.leftNode;
+            }else if(isLeftChild){
+                //如果删除了当前节点，需要将当前节点的父节点的指向进行修改，这个指向就成了当前被删除节点的左子节点。
+                parent.leftNode = current.leftNode;
+            }else {
+                parent.rightNode = current.leftNode;
+            }
+        }else if(current.leftNode==null){
+            //3. 没有左节点,只有右子树,直接用右节点代替当前节点
+            if(current == root){
+                root = current.rightNode;
+            }else if(isLeftChild){
+                parent.leftNode = current.rightNode;
+            }else {
+                parent.rightNode = current.rightNode;
+            }
+        }else {
+            //4. 有左右节点，右子树向左，寻找右子树最小值
+            BinaryNode<Integer> successor = getSuccessor(current);   //寻找继承者
+            if(current == root){
+                root = successor;
+            }else if(isLeftChild){
+                parent.leftNode = successor;    //当前被删除节点的父类的一个赋值操作
+            }else {
+                parent.rightNode = successor;
+            }
+            successor.leftNode = current.leftNode;//给继承者的左节点进行一个赋值
+        }
+
+        return true;
+    }
+
+    //寻找继承者
+    private BinaryNode<Integer> getSuccessor(BinaryNode<Integer> delNode){
+        BinaryNode<Integer> successorParent = delNode;
+        BinaryNode<Integer> successor = delNode;    //初始化
+        BinaryNode<Integer> current = delNode.rightNode;    //先向右节点寻找一位
+        while (current != null){
+            successorParent = successor;
+            successor = current;
+            current = current.leftNode; //一直向左寻找
+        }
+        if(successor != delNode.rightNode){
+            //如果继承者不是当前被删除节点的右子节点，则说明是右子树（不止一层）
+            successorParent.leftNode = successor.rightNode; //继承者的右子树，成了父节点的左子树
+            successor.rightNode = delNode.rightNode;        //右节点赋值
+        }
+
+        return successor;
+    }
+
+    public void displayTree(){
+        Stack globalStack = new Stack();
+        globalStack.push(root);
+        int nBlanks =32;getClass();
+        boolean isRowEmpty = false;
+        System.out.println("=========================================================================");
+        while(isRowEmpty == false) {
+            Stack localStack = new Stack();
+            isRowEmpty = true;
+            for (int  j =0;j<nBlanks;j++) {
+                System.out.print(" ");
+            }
+
+            while (globalStack.isEmpty() == false) {
+                BinaryNode<Integer> temp = (BinaryNode<Integer>)globalStack.pop();
+                if (temp!=null) {
+                    System.out.print(temp.value);
+                    localStack.push(temp.leftNode);
+                    localStack.push(temp.rightNode);
+                    if (temp.leftNode != null || temp.rightNode !=null) {
+                        isRowEmpty = false;
+                    }
+                }
+                else {
+                    System.out.print("--");
+                    localStack.push(null);
+                    localStack.push(null);
+                }
+                for (int j = 0;j<nBlanks*2-2;j++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+            nBlanks /= 2;
+            while (localStack.isEmpty() == false) {
+                globalStack.push(localStack.pop());
+            }
+        }
+        System.out.println("=========================================================================");
+    }
+
     @Override
     public void excute() {
         System.out.println("Binary Tree:");
@@ -72,6 +200,6 @@ public class BinaryTree extends AlgorithmModel{
             tree.insert(element);
         }
 
-        // display
+        displayTree();
     }
 }
