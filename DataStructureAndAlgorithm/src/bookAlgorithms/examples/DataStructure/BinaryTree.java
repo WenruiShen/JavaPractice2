@@ -235,21 +235,20 @@ public class BinaryTree extends AlgorithmModel {
         System.out.println("=========================================================================");
     }
 
-    @Override
-    public void excute() {
+    public void initSimpleBinaryTree(){
         System.out.println("Binary Tree:");
         //int[] array = {45, 47, 32, 43, 32, 6, 1, 7, 12, 32, 39, 32, 44, 37, 44, 32, 32, 45, 32, 55, 32, 26, 21};
         int[] array = {50, 25, 75, 12, 37, 43, 87, 93, 97, 30, 19};
-        //System.out.println("arrary:");
-        //printIntArray(array);
 
-        //BinaryTree tree = new BinaryTree();
         for (Integer element: array){
             this.insert(element);
         }
+    }
+
+    @Override
+    public void excute() {
+        initSimpleBinaryTree();
         displayTree();
-
-
         //this.find(39).display();
         this.traverse(2);
     }
