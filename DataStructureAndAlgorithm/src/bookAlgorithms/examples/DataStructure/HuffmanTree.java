@@ -2,6 +2,10 @@ package bookAlgorithms.examples.DataStructure;
 
 /*
  * 哈夫曼树
+ * 定义：带权路径长度WPL最小的二叉树成为哈夫曼树(最优二叉树)。
+ * 构建方法：选取两个权值最小的根节点优先结合。
+ * 原则：哈夫曼树中权越大的节点离根越近。
+ *
  */
 public class HuffmanTree extends BinaryTree {
 
