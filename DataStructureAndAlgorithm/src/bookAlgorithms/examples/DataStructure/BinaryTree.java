@@ -1,25 +1,26 @@
-package bookAlgorithms.examples;
+package bookAlgorithms.examples.DataStructure;
 
 import bookAlgorithms.DataModel.BinaryNode;
+import bookAlgorithms.examples.AlgorithmModel;
 
 import java.util.Stack;
 
 /*
  * 二叉树定义
  */
-public class BinaryTree extends AlgorithmModel{
-    private BinaryNode<Integer> root;
+public class BinaryTree extends AlgorithmModel {
+    private BinaryNode<Integer, Double> root;
 
     public BinaryTree(){
         root = null; //创建一个空树
     }
 
     // 查找
-    public BinaryNode<Integer> find(Integer value){
-        BinaryNode<Integer> node = root;  // 查询从root开始
+    public BinaryNode<Integer, Double> find(Integer key){
+        BinaryNode<Integer, Double> node = root;  // 查询从root开始
 
-        while (value != node.value){
-            if(value < node.value){
+        while (key != node.key){
+            if(key < node.key){
                 node = node.leftNode;   // 如果小于当前节点，向左子树查找
             }else {
                 node = node.rightNode;   // 如果大于当前节点，向右子树查找
@@ -32,29 +33,29 @@ public class BinaryTree extends AlgorithmModel{
     }
 
     // 插入
-    public void insert(int value){
-        BinaryNode<Integer> newNode = new BinaryNode<>();
-        newNode.value = value;
+    public void insert(int key){
+        BinaryNode<Integer, Double> newNode = new BinaryNode<>();
+        newNode.key = key;
         if(root == null){
             root = newNode;     // 如果root为空，则赋予根结点
         }else {
-            BinaryNode<Integer> currentNode = root;  // 从root开始查找
-            BinaryNode<Integer> parentNode;
+            BinaryNode<Integer, Double> currentNode = root;  // 从root开始查找
+            BinaryNode<Integer, Double> parentNode;
             while (true){
                 parentNode = currentNode;
-                if(value < currentNode.value){
+                if(key < currentNode.key){
                     currentNode = currentNode.leftNode;
                     if(null == currentNode){
                         parentNode.leftNode = newNode;
                         return;
                     }
-                }else if (value > currentNode.value){
+                }else if (key > currentNode.key){
                     currentNode = currentNode.rightNode;
                     if(null == currentNode){
                         parentNode.rightNode = newNode;
                         return;
                     }
-                }else if (value == currentNode.value){
+                }else if (key == currentNode.key){
                     // 有相同值；
                     return;
                 }
@@ -64,13 +65,13 @@ public class BinaryTree extends AlgorithmModel{
 
     //删除
     public boolean delete(int key){
-        BinaryNode<Integer> current = root;
-        BinaryNode<Integer> parent = root;
+        BinaryNode<Integer, Double> current = root;
+        BinaryNode<Integer, Double> parent = root;
         boolean isLeftChild = false;
 
-        while (current.value != key){
+        while (current.key != key){
             parent = current;
-            if(key < current.value){    //向左子树进行查询
+            if(key < current.key){    //向左子树进行查询
                 isLeftChild = true;
                 current = current.leftNode;
             }else{                      //向右子树进行查询
@@ -114,7 +115,7 @@ public class BinaryTree extends AlgorithmModel{
             }
         }else {
             //4. 有左右节点，右子树向左，寻找右子树最小值
-            BinaryNode<Integer> successor = getSuccessor(current);   //寻找继承者
+            BinaryNode<Integer, Double> successor = getSuccessor(current);   //寻找继承者
             if(current == root){
                 root = successor;
             }else if(isLeftChild){
@@ -129,10 +130,10 @@ public class BinaryTree extends AlgorithmModel{
     }
 
     //寻找继承者
-    private BinaryNode<Integer> getSuccessor(BinaryNode<Integer> delNode){
-        BinaryNode<Integer> successorParent = delNode;
-        BinaryNode<Integer> successor = delNode;    //初始化
-        BinaryNode<Integer> current = delNode.rightNode;    //先向右节点寻找一位
+    private BinaryNode<Integer, Double> getSuccessor(BinaryNode<Integer, Double> delNode){
+        BinaryNode<Integer, Double> successorParent = delNode;
+        BinaryNode<Integer, Double> successor = delNode;    //初始化
+        BinaryNode<Integer, Double> current = delNode.rightNode;    //先向右节点寻找一位
         while (current != null){
             successorParent = successor;
             successor = current;
@@ -148,7 +149,7 @@ public class BinaryTree extends AlgorithmModel{
     }
 
     //前序遍历
-    public void preOrder(BinaryNode<Integer> localNode){
+    public void preOrder(BinaryNode<Integer, Double> localNode){
         if(null != localNode){
             localNode.display();            //打印根结点
             preOrder(localNode.leftNode);   //遍历左子树
@@ -157,7 +158,7 @@ public class BinaryTree extends AlgorithmModel{
     }
 
     //中序遍历
-    public void inOrder(BinaryNode<Integer> localNode){
+    public void inOrder(BinaryNode<Integer, Double> localNode){
         if(null != localNode){
             inOrder(localNode.leftNode);   //遍历左子树
             localNode.display();            //打印根结点
@@ -166,7 +167,7 @@ public class BinaryTree extends AlgorithmModel{
     }
 
     //后序遍历
-    public void postOrder(BinaryNode<Integer> localNode){
+    public void postOrder(BinaryNode<Integer, Double> localNode){
         if(null != localNode){
             postOrder(localNode.leftNode);   //遍历左子树
             postOrder(localNode.rightNode);  //遍历右子树
@@ -207,9 +208,9 @@ public class BinaryTree extends AlgorithmModel{
             }
 
             while (globalStack.isEmpty() == false) {
-                BinaryNode<Integer> temp = (BinaryNode<Integer>)globalStack.pop();
+                BinaryNode<Integer, Double> temp = (BinaryNode<Integer, Double>)globalStack.pop();
                 if (temp!=null) {
-                    System.out.print(temp.value);
+                    System.out.print(temp.key);
                     localStack.push(temp.leftNode);
                     localStack.push(temp.rightNode);
                     if (temp.leftNode != null || temp.rightNode !=null) {

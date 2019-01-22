@@ -1,7 +1,7 @@
 package bookAlgorithms;
 
 import bookAlgorithms.examples.AlgorithmModel;
-import bookAlgorithms.examples.BinaryTree;
+import bookAlgorithms.examples.DataStructure.BinaryTree;
 
 public class running {
     public static void main(String[] args){
