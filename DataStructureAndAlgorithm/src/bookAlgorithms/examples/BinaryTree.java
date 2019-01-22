@@ -147,6 +147,52 @@ public class BinaryTree extends AlgorithmModel{
         return successor;
     }
 
+    //前序遍历
+    public void preOrder(BinaryNode<Integer> localNode){
+        if(null != localNode){
+            localNode.display();            //打印根结点
+            preOrder(localNode.leftNode);   //遍历左子树
+            preOrder(localNode.rightNode);  //遍历右子树
+        }
+    }
+
+    //中序遍历
+    public void inOrder(BinaryNode<Integer> localNode){
+        if(null != localNode){
+            inOrder(localNode.leftNode);   //遍历左子树
+            localNode.display();            //打印根结点
+            inOrder(localNode.rightNode);  //遍历右子树
+        }
+    }
+
+    //后序遍历
+    public void postOrder(BinaryNode<Integer> localNode){
+        if(null != localNode){
+            postOrder(localNode.leftNode);   //遍历左子树
+            postOrder(localNode.rightNode);  //遍历右子树
+            localNode.display();            //打印根结点
+        }
+    }
+
+    public void traverse(int type){
+        switch (type) {
+            case 1:
+                System.out.print("\npre order :");
+                preOrder(root);
+                break;
+            case 2:
+                System.out.print("\nin order :");
+                inOrder(root);
+                break;
+            case 3:
+                System.out.print("\npost order :");
+                postOrder(root);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void displayTree(){
         Stack globalStack = new Stack();
         globalStack.push(root);
@@ -191,7 +237,8 @@ public class BinaryTree extends AlgorithmModel{
     @Override
     public void excute() {
         System.out.println("Binary Tree:");
-        int[] array = {2, 6, 1, 7, 12, 32, 39, 32, 44, 37, 44, 32, 32, 47, 32, 43, 32, 45, 32, 55, 32, 26, 21};
+        //int[] array = {45, 47, 32, 43, 32, 6, 1, 7, 12, 32, 39, 32, 44, 37, 44, 32, 32, 45, 32, 55, 32, 26, 21};
+        int[] array = {50, 25, 75, 12, 37, 43, 87, 93, 97, 30, 19};
         //System.out.println("arrary:");
         //printIntArray(array);
 
@@ -199,7 +246,10 @@ public class BinaryTree extends AlgorithmModel{
         for (Integer element: array){
             this.insert(element);
         }
-
         displayTree();
+
+
+        //this.find(39).display();
+        this.traverse(2);
     }
 }

@@ -9,8 +9,8 @@ public class BinaryNode<E extends Object> {
     public BinaryNode<E> rightNode;
 
     public void display(){
-        System.out.println("{");
-        System.out.println(value);
-        System.out.println("}");
+        System.out.print("{");
+        System.out.print(value);
+        System.out.print("}");
     }
 }
