@@ -1,6 +1,6 @@
 package bookAlgorithms.examples.TouTiao;
 
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 /*
  * 今日头条：求下雨最大水位解法

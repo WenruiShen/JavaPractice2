@@ -1,7 +1,7 @@
 package bookAlgorithms.examples.Sort;
 
 
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 import static java.lang.Math.random;
 

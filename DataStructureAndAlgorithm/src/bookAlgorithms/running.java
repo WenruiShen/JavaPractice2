@@ -1,6 +1,6 @@
 package bookAlgorithms;
 
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 import bookAlgorithms.examples.DataStructure.BinaryTree;
 
 public class running {

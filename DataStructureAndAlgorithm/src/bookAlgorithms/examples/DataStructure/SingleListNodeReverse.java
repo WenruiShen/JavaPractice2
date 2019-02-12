@@ -1,7 +1,7 @@
 package bookAlgorithms.examples.DataStructure;
 
 import bookAlgorithms.DataModel.ListNode;
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 /*
  * Created by shenwenrui on 20181219.

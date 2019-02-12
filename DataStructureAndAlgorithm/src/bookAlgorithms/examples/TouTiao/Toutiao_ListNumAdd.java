@@ -1,7 +1,7 @@
 package bookAlgorithms.examples.TouTiao;
 
 import bookAlgorithms.DataModel.ListNode;
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 /*
  * 今日头条：用单向链表表示十进制整数，求两个正整数的和。如图：

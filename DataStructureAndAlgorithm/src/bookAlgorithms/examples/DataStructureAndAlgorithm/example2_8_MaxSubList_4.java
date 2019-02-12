@@ -1,4 +1,6 @@
-package bookAlgorithms.examples;
+package bookAlgorithms.examples.DataStructureAndAlgorithm;
+
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 /*
  * Created by shenwenrui on 20181219.

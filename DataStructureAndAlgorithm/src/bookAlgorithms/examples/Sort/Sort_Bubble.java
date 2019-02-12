@@ -14,7 +14,7 @@ package bookAlgorithms.examples.Sort;
  *
  */
 
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 public class Sort_Bubble extends AlgorithmModel {
 

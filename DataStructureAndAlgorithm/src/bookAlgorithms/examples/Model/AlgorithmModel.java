@@ -1,4 +1,4 @@
-package bookAlgorithms.examples;
+package bookAlgorithms.examples.Model;
 
 public abstract class AlgorithmModel {
 

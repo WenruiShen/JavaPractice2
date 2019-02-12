@@ -1,7 +1,7 @@
 package bookAlgorithms.examples.DataStructure;
 
 import bookAlgorithms.DataModel.BinaryNode;
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 import java.util.Stack;
 

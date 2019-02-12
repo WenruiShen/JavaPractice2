@@ -1,6 +1,6 @@
 package bookAlgorithms.examples.Sort;
 
-import bookAlgorithms.examples.AlgorithmModel;
+import bookAlgorithms.examples.Model.AlgorithmModel;
 
 /*
  * Created by shenwenrui on 20190115.
