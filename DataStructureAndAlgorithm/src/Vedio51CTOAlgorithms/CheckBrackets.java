@@ -2,6 +2,8 @@ package Vedio51CTOAlgorithms;
 
 import bookAlgorithms.examples.Model.AlgorithmModel;
 
+import java.util.Stack;
+
 /*
  * Created by shenwenrui on 20190212.
  * Description: 验证括号;
@@ -13,14 +15,77 @@ import bookAlgorithms.examples.Model.AlgorithmModel;
  */
 public class CheckBrackets extends AlgorithmModel {
 
-    boolean check(String equation){
-        return false;
+    boolean check3(String equation){
+        while (equation.contains("()") || equation.contains("[]") || equation.contains("{}")){
+            equation = equation.replace("()", "")
+                                .replace("[]", "")
+                                .replace("{}", "");
+        }
+        return equation.length()==0;
     }
+
+    boolean check2(String equation){
+        Stack<Character> stack = new Stack<>();
+        for (char c: equation.toCharArray()){
+            switch (c){
+                case '(':
+                    stack.push(')');
+                    break;
+                case '[':
+                    stack.push(']');
+                    break;
+                case '{':
+                    stack.push('}');
+                    break;
+                default:
+                    if(stack.isEmpty() || stack.pop()!=c){
+                        return false;
+                    }
+                    break;
+            }
+        }
+        return stack.size()==0;
+    }
+
+    //支持字符串中包含其他字符
+    boolean check1(String equation){
+        Stack<Character> stack = new Stack<>();
+        for (char c: equation.toCharArray()){
+            switch (c){
+                case '(':
+                    stack.push(c);
+                    break;
+                case '[':
+                    stack.push(c);
+                    break;
+                case '{':
+                    stack.push(c);
+                    break;
+                case ')':
+                    if(stack.isEmpty() || stack.pop()!='('){
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if(stack.isEmpty() || stack.pop()!='['){
+                        return false;
+                    }
+                    break;
+                case '}':
+                    if(stack.isEmpty() || stack.pop()!='{'){
+                        return false;
+                    }
+                    break;
+            }
+        }
+        return stack.size()==0;
+    }
+
     @Override
     public void excute() {
-        String equation = "([][]{})";
+        String equation = "([ffwq]vf[]e{})";
         System.out.println("equation: " + equation);
-        boolean result = check(equation);
+        boolean result = check1(equation);
         System.out.println("check result:" + result);
     }
 }
