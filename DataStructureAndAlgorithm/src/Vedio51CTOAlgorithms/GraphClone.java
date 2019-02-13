@@ -3,6 +3,9 @@ package Vedio51CTOAlgorithms;
 import bookAlgorithms.examples.DataStructure.GraphNode;
 import bookAlgorithms.examples.Model.AlgorithmModel;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /*
  * Created by shenwenrui on 20190201.
  * Description: 克隆图;
@@ -35,11 +38,30 @@ public class GraphClone extends AlgorithmModel {
         return nodes[0];
     }
 
+    public GraphNode cloneGraph(GraphNode node){
+        HashMap<GraphNode, GraphNode> map = new HashMap<>();
+        return cloneGraph(node, map);
+    }
+
+    private GraphNode cloneGraph(GraphNode node, HashMap<GraphNode, GraphNode> map){
+        if(map.containsKey(node)){
+            return map.get(node);
+        }
+        GraphNode clone = new GraphNode();
+        map.put(node, clone);
+        for (GraphNode neighbour: node.neighbours){
+            clone.neighbours.add(cloneGraph(neighbour, map));
+        }
+        return clone;
+    }
+
     @Override
     public void excute() {
         int[][] relationships = {{1, 2}, {0}, {0, 2}};
         GraphNode node = buildGraph(relationships);
-        System.out.println(node);
+        GraphNode clone = cloneGraph(node);
+
+        System.out.println(clone);
 
     }
 }
