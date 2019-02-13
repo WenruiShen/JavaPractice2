@@ -24,6 +24,21 @@ public class PreorderTraversal extends AlgorithmModel {
         Stack<StackElement<IntBinaryNode>> stack = new Stack<>();
         stack.push(new StackElement<IntBinaryNode>(0, node));
 
+        while (!stack.isEmpty()){
+            StackElement<IntBinaryNode> curr = stack.pop();
+            if(curr.node == null){
+                continue;
+            }
+
+            if(curr.type == 1){
+                result.add(curr.node.getValue());
+            }else {
+                stack.push(new StackElement<IntBinaryNode>(0, curr.node.getRight()));
+                stack.push(new StackElement<IntBinaryNode>(0, curr.node.getLeft()));
+                stack.push(new StackElement<IntBinaryNode>(1, curr.node));
+            }
+        }
+
         return result;
     }
 
