@@ -17,7 +17,7 @@ import java.util.Arrays;
  *
  *              51CTO视频-高频算法面试题:11;
  */
-public class FibonacciSequences  extends AlgorithmModel {
+public class FibonacciSequences extends AlgorithmModel {
     static int[] mem;
 
     // 备忘模型
