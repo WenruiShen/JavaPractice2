@@ -30,7 +30,21 @@ public class CommonAncestor extends AlgorithmModel {
             return -1;
         }
 
-        return root.getValue();
+        if(root.getValue()==value1 || root.getValue()==value2){
+            // 不再向下寻找，前提是value1和value2都存在
+            return root.getValue();
+        }
+
+        int leftValue = searchAncestor(root.getLeft(), value1, value2);
+        int rightValue = searchAncestor(root.getRight(), value1, value2);
+
+        if(leftValue!=-1 && rightValue!=-1){
+            //左右子数都不为-1
+            return root.getValue();
+        }else {
+            //找到一个，或没有找到；
+            return leftValue+rightValue+1;
+        }
     }
 
     @Override
