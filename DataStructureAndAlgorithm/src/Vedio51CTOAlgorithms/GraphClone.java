@@ -1,5 +1,6 @@
 package Vedio51CTOAlgorithms;
 
+import bookAlgorithms.examples.DataStructure.GraphNode;
 import bookAlgorithms.examples.Model.AlgorithmModel;
 
 /*
@@ -21,8 +22,24 @@ import bookAlgorithms.examples.Model.AlgorithmModel;
  */
 public class GraphClone extends AlgorithmModel {
 
+    public GraphNode buildGraph(int[][] relationships){
+        GraphNode[] nodes = new GraphNode[relationships.length];
+        for (int i=0; i<relationships.length; i++){
+            nodes[i] = new GraphNode();
+        }
+        for (int i=0; i<relationships.length; i++){
+            for (int neighbour: relationships[i]){
+                nodes[i].neighbours.add(nodes[neighbour]);
+            }
+        }
+        return nodes[0];
+    }
+
     @Override
     public void excute() {
+        int[][] relationships = {{1, 2}, {0}, {0, 2}};
+        GraphNode node = buildGraph(relationships);
+        System.out.println(node);
 
     }
 }
