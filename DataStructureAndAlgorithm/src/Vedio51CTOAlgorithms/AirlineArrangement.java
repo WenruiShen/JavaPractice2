@@ -2,6 +2,9 @@ package Vedio51CTOAlgorithms;
 
 import bookAlgorithms.examples.Model.AlgorithmModel;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /*
  * Created by shenwenrui on 20190201.
  * Description: 安排航班;
@@ -26,10 +29,34 @@ import bookAlgorithms.examples.Model.AlgorithmModel;
  *              51CTO视频-高频算法面试题:10;
  */
 public class AirlineArrangement extends AlgorithmModel {
+    public int schedule(int[][][] flights, int from, int to, int k){
+        //定义优先队列，存储当前cost最小的pair [cost, city, remain k]
+        Queue<int[]> queue = new PriorityQueue<>((a, b)->(Integer.compare(a[0],b[0])));
+        queue.add(new int[]{0, from, k+1});
 
+        while (!queue.isEmpty()){
+            int[] top = queue.remove();
+            int price = top[0];
+            int city = top[1];
+            int stops = top[2];
+            if(city == to){
+                return price;
+            }
+            if(stops>0){
+                for(int i=0; i<flights[city].length; i++){
+                    //遍历当前点的下一站
+                    queue.add(new int[]{price+flights[city][i][1], flights[city][i][0], stops-1});
+                }
+            }
+        }
+        return -1;
+    }
 
     @Override
     public void excute() {
-
+        int[][][] flights = {{{1,1000}, {2,2000}}, {{2,500}}, {{1,500}}};
+        int from=0, to=2, k=1;
+        int cost = schedule(flights, from, to, k);
+        System.out.println("cost:" + cost);
     }
 }
