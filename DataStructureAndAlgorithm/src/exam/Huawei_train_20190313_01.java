@@ -9,7 +9,7 @@ import java.util.Scanner;
  * input: hello world
  * output: t
  */
-public class Huawei_train_20190313 {
+public class Huawei_train_20190313_01 {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         String s = "";
