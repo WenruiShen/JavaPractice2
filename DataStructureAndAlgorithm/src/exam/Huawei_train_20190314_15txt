@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// 判断麻将是否和牌
+bool canSuccess(const string &s) {
+	// 字符串长度不符合
+	if (s.length() < 2 || s.length() >= 15) return false;
+	// 剩下的2张牌为对子则和牌否则不能和牌
+	if (s.length() == 2) return s[0] == s[1];
+	bool flag = false;
+	auto begin= s.begin(), end = s.end();
+	while (end - begin > 2)
+	{
+		// 判断是否有刻子
+		if (*begin == *(begin + 1) && *begin == *(begin + 2))
+		{
+			// 去掉刻子后递归处理
+			string tmp1(s.begin(), begin);
+			string tmp2(begin + 3, end);
+			flag |= canSuccess(tmp1 + tmp2);
+		}
+		// 判断是否有顺子
+		else if (*begin + 1 == *(begin + 1)) {
+			// 顺子中间的牌可能有多张相同的，遍历找到第一个不同的
+			int midSameCount = 0;
+			char mid = *(begin + 1);
+			auto iter = begin + 1;
+			while (*iter == mid)
+			{
+				midSameCount++;
+				// 如果递归到字符串末则标记后退出循环
+				if (++iter == end)
+				{
+					midSameCount = -1;
+					break;
+				}
+			}
+			// 处理有顺子的情况
+			if (midSameCount > 0 && mid + 1 == *iter) {
+				// 去掉顺子后递归处理
+				string tmp1(s.begin(), begin);
+				string tmp2;
+				tmp2.insert(0, midSameCount - 1, mid);
+				string tmp3(iter + 1, end);
+				flag |= canSuccess(tmp1 + tmp2 + tmp3);
+			}
+
+		}
+		++begin;
+	}
+	return flag;
+}
+
+int main()
+{
+	string input;
+	getline(cin, input);
+	bool flag = canSuccess(input);
+	cout << (flag ? "yes" : "no") << endl;
+}
