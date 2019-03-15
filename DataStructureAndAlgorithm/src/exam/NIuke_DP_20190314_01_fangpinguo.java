@@ -49,8 +49,17 @@ import java.util.Scanner;
 public class NIuke_DP_20190314_01_fangpinguo {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int m = input.nextInt();    // appleNum
-        int n = input.nextInt();    // plateNum
+        while (input.hasNext()){
+            int m = input.nextInt();    // appleNum
+            int n = input.nextInt();    // plateNum
+            System.out.println(dp(m, n));
+        }
+        input.close();
+    }
+    public static int dp(int m, int n){
+        if(m==0 || m==1 || n==0 || n==1){
+            return 1;
+        }
 
         int[][] dp = new int[n+1][m+1];
         for(int i=0; i<=n; i++){
@@ -70,7 +79,6 @@ public class NIuke_DP_20190314_01_fangpinguo {
                 }
             }
         }
-        System.out.println(dp[n][m]);
-        input.close();
+        return dp[n][m];
     }
 }
